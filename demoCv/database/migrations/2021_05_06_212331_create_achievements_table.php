@@ -17,7 +17,7 @@ class CreateAchievementsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('skill_id');
             $table->string('title');
-            $table->string('name');
+            $table->string('date');
             $table->timestamps();
         });
     }

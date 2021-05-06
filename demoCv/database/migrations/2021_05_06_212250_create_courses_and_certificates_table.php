@@ -18,7 +18,7 @@ class CreateCoursesAndCertificatesTable extends Migration
             $table->unsignedBigInteger('skill_id');
             $table->string('title');
             $table->string('institution_name');
-            $table->string('data');
+            $table->string('date');
             $table->timestamps();
         });
     }
