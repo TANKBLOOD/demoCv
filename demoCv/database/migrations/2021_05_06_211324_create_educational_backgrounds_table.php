@@ -15,6 +15,7 @@ class CreateEducationalBackgroundsTable extends Migration
     {
         Schema::create('educational_backgrounds', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cv_id');
             $table->string('degree_name');
             $table->string('institution_name');
             $table->string('start_date');

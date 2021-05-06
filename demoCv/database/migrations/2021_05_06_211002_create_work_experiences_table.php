@@ -15,6 +15,7 @@ class CreateWorkExperiencesTable extends Migration
     {
         Schema::create('work_experiences', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cv_id');
             $table->string('title');
             $table->string('work_place_name');
             $table->string('start_date');
