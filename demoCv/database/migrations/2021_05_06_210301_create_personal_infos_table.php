@@ -16,6 +16,7 @@ class CreatePersonalInfosTable extends Migration
         Schema::create('personal_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cv_id');
+            $table->foreign('cv_id')->references('id')->on('light_cvs')->onDelete('cascade');
             $table->string('image_path');
             $table->string('f_name');
             $table->string('current_job');

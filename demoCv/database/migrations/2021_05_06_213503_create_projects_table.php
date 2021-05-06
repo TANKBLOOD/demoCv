@@ -15,7 +15,8 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('cv_id');
+            $table->unsignedBigInteger('cv_id');
+            $table->foreign('cv_id')->references('id')->on('light_cvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

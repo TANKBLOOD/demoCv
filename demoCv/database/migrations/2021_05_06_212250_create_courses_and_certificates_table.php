@@ -16,6 +16,7 @@ class CreateCoursesAndCertificatesTable extends Migration
         Schema::create('courses_and_certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('skill_id');
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
             $table->string('title');
             $table->string('institution_name');
             $table->string('date');

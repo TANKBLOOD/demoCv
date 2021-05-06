@@ -16,6 +16,7 @@ class CreateFamiliarLanguagesTable extends Migration
         Schema::create('familiar_languages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('skill_id');
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
             $table->string('name');
             $table->integer('reading_skill');
             $table->integer('writing_skill');

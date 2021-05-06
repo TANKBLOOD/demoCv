@@ -16,6 +16,7 @@ class CreateRelatedLinksTable extends Migration
         Schema::create('related_links', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cv_id');
+            $table->foreign('cv_id')->references('id')->on('light_cvs')->onDelete('cascade');
             $table->string('title');
             $table->string('url');
             $table->timestamps();

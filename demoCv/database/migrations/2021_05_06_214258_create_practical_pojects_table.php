@@ -16,6 +16,7 @@ class CreatePracticalPojectsTable extends Migration
         Schema::create('practical_pojects', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->string('name');
             $table->string('task_master');
             $table->string('related_link');

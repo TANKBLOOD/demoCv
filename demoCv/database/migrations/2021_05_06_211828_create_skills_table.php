@@ -16,6 +16,7 @@ class CreateSkillsTable extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cv_id');
+            $table->foreign('cv_id')->references('id')->on('light_cvs')->onDelete('cascade');
             $table->timestamps();
         });
     }

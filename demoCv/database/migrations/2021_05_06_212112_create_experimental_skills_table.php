@@ -16,6 +16,7 @@ class CreateExperimentalSkillsTable extends Migration
         Schema::create('experimental_skills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('skill_id');
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
             $table->string('name');
             $table->integer('level');
             $table->timestamps();

@@ -16,6 +16,7 @@ class CreateResearchAndArticlesTable extends Migration
         Schema::create('research_and_articles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->set('type', ['کتاب', 'مقاله', 'پایان نامه' , 'سایر']);
             $table->string('name');
             $table->string('publisher');
