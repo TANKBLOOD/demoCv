@@ -12,7 +12,7 @@ class Projects extends Model
         return $this->hasMany(ResearchAndArticles::class);
     }
     public function practicalProjects(){
-        return $this->hasMany(PracticalPoject::class);
+        return $this->hasMany(practicalProjects::class);
     }
     public function cv() {
         $this->belongsTo(LightCv::class, 'cv_id');

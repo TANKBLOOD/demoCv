@@ -25,7 +25,7 @@ class LightCv extends Model
         return $this->hasOne(Projects::class);
     }
     public function links() {
-        return $this->hasMany(relatedLinks::class);
+        return $this->hasMany(RelatedLinks::class);
     }
     public function user() {
         $this->belongsTo(User::class, 'user_id');
