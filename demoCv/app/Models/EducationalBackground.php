@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class EducationalBackground extends Model
 {
     use HasFactory;
+
+    public function cv() {
+       return $this->belongsTo(LightCv::class, 'cv_id');
+    }
 }
