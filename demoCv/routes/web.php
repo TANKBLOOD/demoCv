@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LightCvController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/createCv', [LightCvController::class, 'create'])->name('lightCv.create');
