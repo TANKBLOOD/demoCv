@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LightCvController;
+use App\Http\Controllers\PanelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Route::get('/createCv', [LightCvController::class, 'create'])->name('lightCv.cre
 Route::post('/createCv', [LightCvController::class, 'store'])->name('lightCv.store');
 
 Route::get('/loadCv/{lightCv}', [LightCvController::class, 'loadCvTemplate'])->name('cv.load');
+Route::get('/userPanel/{user}', [PanelController::class, 'loadUserPanel'])->name('panel.load');
