@@ -17,7 +17,7 @@ class CreateResearchAndArticlesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->set('type', ['کتاب', 'مقاله', 'پایان نامه' , 'سایر']);
+            $table->set('type', ['book', 'article', 'thesis', 'others']);
             $table->string('name');
             $table->string('publisher');
             $table->string('related_link');

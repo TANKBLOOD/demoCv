@@ -2,7 +2,7 @@
 *, *:before, *:after {
     box-sizing: border-box;
   }
-  
+
   html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
     margin: 0;
     padding: 0;
@@ -14,73 +14,72 @@
     -webkit-font-smoothing: antialiased;
     text-size-adjust: none;
   }
-  
+
   footer, header, nav, section, main {
     display: block;
   }
-  
+
   body {
     line-height: 1;
   }
-  
+
   ol, ul {
     list-style: none;
   }
-  
+
   blockquote, q {
     quotes: none;
   }
-  
+
   blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none;
   }
-  
+
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
-  
+
   input, button {
-    -webkit-appearance: none;
     border-radius: 200px;
     border: 1px solid #707070;
     text-align: right;
     outline: none;
   }
-  
+
   h1 {
     font-size: 2em;
   }
-  
+
   h2 {
     font-size: 1.5em;
   }
-  
+
   h3 {
     font-size: 1.17em;
   }
-  
+
   h4 {
     font-size: 1.12em;
   }
-  
+
   h5 {
     font-size: .83em;
   }
-  
+
   h6 {
     font-size: .75em;
   }
-  
+
   .btn-primary {
     background-color: #1DA1F2;
     color: #fff;
   }
-  
+
   strong {
     font-weight: bold;
-  }  
+  }
 
 /* ** Login page ** */
 
@@ -88,14 +87,14 @@
     font-family: Shabnam;
     color: #707070;
   }
-  
+
   body {
     background-color: #F0F2F5;
     font-family: Shabnam;
     text-align: center;
     color: #707070;
   }
-  
+
   .container {
     background-color: #fff;
     width: 80%;
@@ -105,39 +104,39 @@
     flex-direction: column;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
   }
-  
+
   .container .intro {
     margin-bottom: 3rem;
     text-align: center;
   }
-  
+
   .container .intro h1 {
     font-size: 3.5em;
     color: #1DA1F2;
     margin-bottom: 1rem;
   }
-  
+
   .container .intro p {
     font-size: 1.5em;
   }
-  
+
   .container .form-container {
     display: flex;
     flex-direction: column;
   }
-  
+
   .container .form-container form {
     display: flex;
     flex-direction: column;
   }
-  
+
   .container .form-container form input {
     margin: 10px auto;
     width: 90%;
     padding: 10px 1rem;
     font-size: 1em;
   }
-  
+
   .container .form-container form input[type=submit] {
     background-color: #fff;
     border-color: #1DA1F2;
@@ -145,11 +144,11 @@
     text-align: center;
     cursor: pointer;
   }
-  
+
   .container .form-container a {
     margin: 1rem auto;
   }
-  
+
   .container .form-container button {
     margin: 10px auto;
     width: 90%;
@@ -159,7 +158,7 @@
     cursor: pointer;
     border-color: #1DA1F2;
   }
-  
+
   /* ------> Modal styles <------ */
   .modal {
     display: none;
@@ -173,7 +172,7 @@
     background-color: black;
     background-color: rgba(0, 0, 0, 0.4);
   }
-  
+
   .modal .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -181,7 +180,7 @@
     padding: 4em 1em;
     width: 80%;
   }
-  
+
   .modal .modal-content .close {
     color: var(--color-primary);
     position: absolute;
@@ -191,20 +190,20 @@
     font-weight: bold;
     transition: 0.3s;
   }
-  
+
   .modal .modal-content .close:hover,
   .modal .modal-content .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
   }
-  
+
   .modal .modal-content form {
     display: flex;
     flex-direction: column;
     margin: 2rem;
   }
-  
+
   .modal .modal-content form input {
     margin: 10px auto;
     width: 90%;
@@ -212,13 +211,13 @@
     font-size: 1em;
     border: 1px solid #707070;
   }
-  
+
   .modal .modal-content form input[type=submit] {
     border-color: #1DA1F2;
     text-align: center;
     cursor: pointer;
   }
-  
+
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
     .modal .modal-content form input {
@@ -231,7 +230,7 @@
       width: 70%;
     }
   }
-  
+
   /* Medium devices (landscape tablets, 768px and up) */
   @media only screen and (min-width: 768px) {
     .modal .modal-content form input {
@@ -244,7 +243,7 @@
       width: 60%;
     }
   }
-  
+
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
     .modal .modal-content {
@@ -391,12 +390,12 @@ textarea {
     display: inline-block;
     opacity: 0.5;
   }
-  
+
 /* Mark the active step: */
 .active {
     opacity: 1;
 }
-  
+
 /* Mark the steps that are finished and valid: */
 .finish {
     background-color: #1DA1F2;
@@ -440,7 +439,7 @@ button {
     margin: 5px auto 10px;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;  
+    justify-content: space-between;
 }
 
 .accordion-head i {
@@ -474,7 +473,7 @@ button {
     margin: 5px auto 10px;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;  
+    justify-content: space-between;
 }
 
 .box-head i {
@@ -507,24 +506,31 @@ button {
 .templates {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     text-align: center;
 }
 .template {
     margin-bottom: 20px;
-    cursor: pointer;
 }
 .template img {
     width: 80%;
     border: 5px solid gray;
 }
-
-.selected img {
-    border-color: chartreuse;
+.template-name {
+  margin-top: 20px;
+}
+.template label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 
-.template:hover img{
-    border-color: chartreuse;
+.input-hidden {
+  display: none;
+}
+
+input[type=radio]:checked + label>img {
+  border-color: chartreuse;
 }
 
 .add-new {
@@ -538,7 +544,7 @@ button {
 .panel-nav {
     background-color: #fff;
   }
-  
+
   .panel-nav .container-nav {
     width: 90%;
     margin: auto;
@@ -547,7 +553,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .panel-nav .container-nav .user-info {
     width: 100%;
     display: flex;
@@ -555,44 +561,44 @@ button {
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .panel-nav .container-nav .user-info .user {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
   }
-  
+
   .panel-nav .container-nav .user-info .user img {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     margin-left: 10px;
   }
-  
+
   .panel-nav .container-nav #bars-icon {
     cursor: pointer;
   }
-  
+
   .panel-nav .container-nav .panel-mune {
     display: none;
     width: 100%;
   }
-  
+
   .panel-nav .container-nav .panel-mune li {
     margin: 10px;
     cursor: pointer;
   }
-  
+
   .panel-nav .container-nav .panel-mune .active {
     color: #1DA1F2;
   }
-  
+
   .panel-nav .container-nav .visible {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
     .panel-nav .container-nav {
@@ -623,19 +629,19 @@ button {
       color: #1DA1F2;
     }
   }
-  
+
   .panel-container {
     margin: 3rem auto;
     width: 90%;
   }
-  
+
   .panel-container .tabel .tabel-meta {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     margin-bottom: 15px;
   }
-  
+
   .panel-container .tabel .tabel-row {
     background-color: #fff;
     display: flex;
@@ -646,16 +652,16 @@ button {
     box-shadow: 0 3 6 rgba(0, 0, 0, 0.3);
     margin: 1.5rem 0;
   }
-  
+
   .panel-container .tabel .tabel-row .options {
     display: flex;
     justify-content: space-between;
   }
-  
+
   .panel-container .tabel .tabel-row .options i {
     margin: 0 5px;
   }
-  
+
   @media only screen and (min-width: 992px) {
     .panel-container {
       width: 70%;

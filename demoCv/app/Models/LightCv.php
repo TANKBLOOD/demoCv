@@ -10,22 +10,22 @@ class LightCv extends Model
     use HasFactory;
 
     public function personalInfo() {
-        return $this->hasOne(PersonalInfo::class);
+        return $this->hasOne(PersonalInfo::class, 'cv_id');
     }
     public function workExp() {
-        return $this->hasMany(WorkExperience::class);
+        return $this->hasMany(WorkExperience::class, 'cv_id');
     }
     public function education() {
-        return $this->hasMany(EducationalBackground::class);
+        return $this->hasMany(EducationalBackground::class, 'cv_id');
     }
     public function skill() {
-        return $this->hasOne(Skills::class);
+        return $this->hasOne(Skills::class, 'cv_id');
     }
     public function projects() {
-        return $this->hasOne(Projects::class);
+        return $this->hasOne(Projects::class, 'cv_id');
     }
     public function links() {
-        return $this->hasMany(RelatedLinks::class);
+        return $this->hasMany(RelatedLinks::class, 'cv_id');
     }
     public function user() {
         $this->belongsTo(User::class, 'user_id');

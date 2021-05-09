@@ -10,6 +10,7 @@ use App\Models\FamiliarLanguages;
 use App\Models\LightCv;
 use App\Models\PersonalInfo;
 use App\Models\PracticalPoject;
+use App\Models\PracticalProject;
 use App\Models\Projects;
 use App\Models\RelatedLinks;
 use App\Models\ResearchAndArticles;
@@ -24,8 +25,12 @@ class LightCvController extends Controller
     }
     public function store(Request $request) {
         $newLightCv= new LightCv();
+        $newLightCv->user_id= 1;
+        $newLightCv->title= 'test';
+        $newLightCv->save();
 
         $personalInfo= new PersonalInfo();
+        $personalInfo->image_path= 'defualt';
         $personalInfo->f_name= $request->name;
         $personalInfo->current_job= $request->job;
         $personalInfo->city= $request->city;
@@ -70,6 +75,8 @@ class LightCvController extends Controller
         }
 
         $newSkill= new Skills();
+        $newLightCv->skill()->save($newSkill);
+        $newSkill->save();
 
         $fmLanguageNames= $request->languageName;
         $fmlanguageReadingLvls= $request->readingLvl;
@@ -119,9 +126,11 @@ class LightCvController extends Controller
             $newSkill->achivements()->save($newAchv);
         }
 
-        $newLightCv->skill()->save($newSkill);
+
 
         $newProject= new Projects();
+        $newLightCv->projects()->save($newProject);
+
 
         $resAndArtTypes= $request->researchType;
         $resAndArtNames= $request->researchName;
@@ -148,7 +157,7 @@ class LightCvController extends Controller
         $pracProjMoreInfos= $request->projectMoreinfo;
         $pracProjCount= count($pracProjNames);
         for($i=0; $i< $pracProjCount; $i++) {
-            $newPracProj= new PracticalPoject();
+            $newPracProj= new PracticalProject();
             $newPracProj->name= $pracProjNames[$i];
             $newPracProj->task_master= $pracProjEmployers[$i];
             $newPracProj->related_link= $pracProjLinks[$i];
@@ -157,8 +166,6 @@ class LightCvController extends Controller
 
             $newProject->practicalProjects()->save($newPracProj);
         }
-
-        $newLightCv->projects()->save($newProject);
 
         $relatedLinkTitles= $request->linkTitle;
         $relatedLinkUrls= $request->linkUrl;
@@ -170,5 +177,14 @@ class LightCvController extends Controller
 
             $newLightCv->links()->save($newRelatedLink);
         }
+
+        $newLightCv->user_id= 1;
+        $newLightCv->title= 'test';
+        $newLightCv->save();
+
+    }
+
+    public function loadCvTemplate(LightCv $lightCv){
+        return view('cv-templates.template_1', ['lightCv'=> $lightCv]);
     }
 }
