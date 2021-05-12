@@ -122,6 +122,11 @@ for (var button of buttons) {
         for (var inp of newNodeInputs){
           inp.value = null;
         }
+
+        var newNodeTextAreas = newNode.getElementsByTagName('textarea');
+        for (var txtarea of newNodeTextAreas){
+          txtarea.value = null;
+        }
         
         var newNodeHead = newNode.getElementsByClassName("accordion-head")[0];
         if(newNodeHead){
