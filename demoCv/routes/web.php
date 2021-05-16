@@ -32,3 +32,11 @@ Route::post('/editPinfo', [lightCvComponentsController::class, 'editPersonalInfo
 Route::post('/editWexp', [lightCvComponentsController::class, 'editWexpAjax'])->name('wExp.edit');
 
 Route::post('/editEduc', [lightCvComponentsController::class, 'editEducationAjax'])->name('educ.edit');
+
+Route::post('/editFlang', [lightCvComponentsController::class, 'editFlangAjax'])->name('fLang.edit');
+
+Route::post('/editExpSkill', [lightCvComponentsController::class, 'editExpSkillAjax'])->name('expSkill.edit');
+
+Route::post('/editCandC', [lightCvComponentsController::class, 'cAndCEditAjax'])->name('cAndC.Edit');
+
+Route::post('/editAchv', [lightCvComponentsController::class, 'achvEditAjax'])->name('achv.edit');

@@ -252,30 +252,30 @@
                                 <div class="input-box w50">
                                     <label for="language-name">نام زبان</label>
                                     <span class="value">{{$item->name}}</span>
-                                    <input class="gone" type="text" name="language-name" id="language-name">
+                                    <input class="gone" type="text" name="languageName" id="language-name">
                                 </div>
                                 <div class="row-2">
                                     <div class="input-box">
                                         <label for="reading-lvl">مهارت خواندن</label>
                                         <span class="value">{{$item->reading_skill}}</span>
-                                        <input class="gone" type="number" name="reading-lvl" id="reading-lvl" value="1" min="1" max="5">
+                                        <input class="gone" type="number" name="readingLvl" id="reading-lvl" value="1" min="1" max="5">
                                     </div>
                                     <div class="input-box">
                                         <label for="writing-lvl">مهارت نوشتن</label>
                                         <span class="value">{{$item->writing_skill}}</span>
-                                        <input class="gone" type="number" name="writing-lvl" id="writing-lvl" value="1" min="1" max="5">
+                                        <input class="gone" type="number" name="writingLvl" id="writing-lvl" value="1" min="1" max="5">
                                     </div>
                                 </div>
                                 <div class="row-2">
                                     <div class="input-box">
                                         <label for="listening-lvl">مهارت شنیداری</label>
                                         <span class="value">{{$item->listening_skill}}</span>
-                                        <input class="gone" type="number" name="listening-lvl" id="listening-lvl" value="1" min="1" max="5">
+                                        <input class="gone" type="number" name="listeningLvl" id="listening-lvl" value="1" min="1" max="5">
                                     </div>
                                     <div class="input-box">
                                         <label for="speaking-lvl">مهارت گفتاری</label>
                                         <span class="value">{{$item->speaking_skill}}</span>
-                                        <input class="gone" type="number" name="speaking-lvl" id="speaking-lvl" value="1" min="1" max="5">
+                                        <input class="gone" type="number" name="speakingLvl" id="speaking-lvl" value="1" min="1" max="5">
                                     </div>
                                 </div>
                             </div>
@@ -290,24 +290,27 @@
                         <h2>مهارت های تجربی</h2>
                     </div>
                     @foreach ($lightCv->skill->expSkills as $item)
-                    <div class="box">
-                        <div class="box-head">
-                            <i class="fas fa-times"></i>
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
-                        </div>
-                        <div class="box-content">
-                            <div class="input-box w70">
-                                <label for="skill-name">نام مهارت</label>
-                                <span class="value">{{$item->name}}</span>
-                                <input class="gone" type="text" name="skill-name" id="skill-name">
+                    <form action="" id="expSkill-{{$item->id}}">
+                        <input type="hidden" name="expSkillId" value="{{$item->id}}">
+                        <div class="box">
+                            <div class="box-head">
+                                <i class="fas fa-times"></i>
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="expSkill" data-form-id="expSkill-{{$item->id}}">ویرایش اطلاعات</button>
                             </div>
-                            <div class="input-box w20">
-                                <label for="skill-lvl">سطح</label>
-                                <span class="value">{{$item->level}}</span>
-                                <input class="gone" type="number" name="skill-lvl" id="skill-lvl" value="1" min="1" max="5">
+                            <div class="box-content">
+                                <div class="input-box w70">
+                                    <label for="skill-name">نام مهارت</label>
+                                    <span class="value">{{$item->name}}</span>
+                                    <input class="gone" type="text" name="skillName" id="skill-name">
+                                </div>
+                                <div class="input-box w20">
+                                    <label for="skill-lvl">سطح</label>
+                                    <span class="value">{{$item->level}}</span>
+                                    <input class="gone" type="number" name="skillLvl" id="skill-lvl" value="1" min="1" max="5">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     @endforeach
                     <p class="add-new">افزودن مهارت تازه</p>
                 </section>
@@ -319,29 +322,32 @@
                         </h2>
                     </div>
                     @foreach ($lightCv->skill->coursesAndCertificates as $item)
-                    <div class="box">
-                        <div class="box-head">
-                            <i class="fas fa-times"></i>
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
+                    <form action="" id="cAndC-{{$item->id}}">
+                        <input type="hidden" name="cAndCId" value="{{$item->id}}">
+                        <div class="box">
+                            <div class="box-head">
+                                <i class="fas fa-times"></i>
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="cAndC" data-form-id="cAndC-{{$item->id}}">ویرایش اطلاعات</button>
+                            </div>
+                            <div class="box-content">
+                                <div class="input-box w50">
+                                    <label for="certificate-name">عنوان</label>
+                                    <span class="value">{{$item->title}}</span>
+                                    <input class="gone" type="text" name="certificateName" id="certificate-name">
+                                </div>
+                                <div class="input-box w20">
+                                    <label for="institute-name">نام موسسه</label>
+                                    <span class="value">{{$item->institution_name}}</span>
+                                    <input class="gone" type="text" name="instituteName" id="institute-name">
+                                </div>
+                                <div class="input-box w20">
+                                    <label for="certificate-date">تاریخ</label>
+                                    <span class="value">{{$item->date}}</span>
+                                    <input class="gone" type="text" name="certificateDate" id="certificate-date">
+                                </div>
+                            </div>
                         </div>
-                        <div class="box-content">
-                            <div class="input-box w50">
-                                <label for="certificate-name">عنوان</label>
-                                <span class="value">{{$item->title}}</span>
-                                <input class="gone" type="text" name="certificate-name" id="certificate-name">
-                            </div>
-                            <div class="input-box w20">
-                                <label for="institute-name">نام موسسه</label>
-                                <span class="value">{{$item->institution_name}}</span>
-                                <input class="gone" type="text" name="institute-name" id="institute-name">
-                            </div>
-                            <div class="input-box w20">
-                                <label for="certificate-date">تاریخ</label>
-                                <span class="value">{{$item->date}}</span>
-                                <input class="gone" type="text" name="certificate-date" id="certificate-date">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                     @endforeach
                     <p class="add-new">افزودن</p>
                 </section>
@@ -353,24 +359,27 @@
                         </h2>
                     </div>
                     @foreach ($lightCv->skill->achivements as $item)
-                    <div class="box">
-                        <div class="box-head">
-                            <i class="fas fa-times"></i>
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
-                        </div>
-                        <div class="box-content">
-                            <div class="input-box w70">
-                                <label for="honor-name">عنوان</label>
-                                <span class="value">{{$item->title}}</span>
-                                <input class="gone" type="text" name="honor-name" id="honor-name">
+                    <form action="" id="achv-{{$item->id}}">
+                        <input type="hidden" name="achvId" value="{{$item->id}}">
+                        <div class="box">
+                            <div class="box-head">
+                                <i class="fas fa-times"></i>
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="achv" data-form-id="achv-{{$item->id}}">ویرایش اطلاعات</button>
                             </div>
-                            <div class="input-box w20">
-                                <label for="honor-date">تاریخ</label>
-                                <span class="value">{{$item->date}}</span>
-                                <input class="gone" type="text" name="honor-date" id="honor-date">
+                            <div class="box-content">
+                                <div class="input-box w70">
+                                    <label for="honor-name">عنوان</label>
+                                    <span class="value">{{$item->title}}</span>
+                                    <input class="gone" type="text" name="achvName" id="honor-name">
+                                </div>
+                                <div class="input-box w20">
+                                    <label for="honor-date">تاریخ</label>
+                                    <span class="value">{{$item->date}}</span>
+                                    <input class="gone" type="text" name="achvDate" id="honor-date">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     @endforeach
                     <p class="add-new">افزودن</p>
                 </section>

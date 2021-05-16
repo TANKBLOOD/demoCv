@@ -67,6 +67,14 @@ function changeBtnTxt(btn, btnDefultTxt) {
             wExpEditAjax();
         }else if(btnGroupt == 'educ') {
             educEditAjax();
+        }else if(btnGroupt == 'fLang') {
+            fLangEditAjax();
+        }else if(btnGroupt == 'expSkill') {
+            expSkillEditAjax();
+        }else if(btnGroupt == 'cAndC') {
+            editCandCAjax();
+        }else if(btnGroupt == 'achv') {
+            editAchvAjax();
         }
 
     }
@@ -126,7 +134,87 @@ function educEditAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['wExpId']);
+            alert(response['educId']);
+        }
+        },
+    });
+}
+
+function fLangEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editFlang",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['fLangId']);
+        }
+        },
+    });
+}
+
+function expSkillEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editExpSkill",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['expSkillId']);
+        }
+        },
+    });
+}
+
+function editCandCAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editCandC",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['cAndCId']);
+        }
+        },
+    });
+}
+
+function editAchvAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editAchv",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['achvId']);
         }
         },
     });
