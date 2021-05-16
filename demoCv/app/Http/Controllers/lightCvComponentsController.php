@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EducationalBackground;
 use App\Models\PersonalInfo;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
@@ -39,7 +40,15 @@ class lightCvComponentsController extends Controller
         return response()->json(array('wExpId'=> $wExp->id), 200);
     }
 
-    public function editEducationAjax() {
+    public function editEducationAjax(Request $request) {
+        $educ= EducationalBackground::findOrFail($request->educId);
+        $educ->degree_name= $request->gradeName;
+        $educ->institution_name= $request->gradeLocation;
+        $educ->start_date= $request->gradeStartDate;
+        $educ->end_date= $request->gradeEndDate;
+        $educ->additional_info= $request->gradeMoreinfo;
 
+        $educ->save();
+        return response()->json(array('wExpId'=> $educ->id), 200);
     }
 }

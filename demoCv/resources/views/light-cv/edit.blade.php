@@ -188,41 +188,42 @@
             <h1 class="tab-title">سوابق تحصیلی</h1>
             <div class="content">
                 @foreach ($lightCv->education as $item)
-                    <form action="">
+                    <form action="" id="educ-{{$item->id}}">
+                        <input type="hidden" name="educId" value="{{$item->id}}">
                         <div class="accordion">
                             <div class="accordion-head">
                                 <i class="fas fa-times"></i>
                                 <i class="fas fa-arrow-up"></i>
                             </div>
                             <div class="accordion-content active">
-                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="educ" data-form-id="educ-{{$item->id}}">ویرایش اطلاعات</button>
                                 <div class="row">
                                     <div class="input-box">
                                         <label for="grade-name">نام مقطع تحصیلی</label>
                                         <span class="value">{{$item->degree_name}}</span>
-                                        <input class="gone" type="text" name="grade-name" id="grade-name">
+                                        <input class="gone" type="text" name="gradeName" id="grade-name">
                                     </div>
                                     <div class="input-box">
                                         <label for="grade-location">نام محل تحصیل</label>
                                         <span class="value">{{$item->institution_name}}</span>
-                                        <input class="gone" type="text" name="grade-location" id="grade-location">
+                                        <input class="gone" type="text" name="gradeLocation" id="grade-location">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-box">
                                         <label for="grade-date_start">تاریخ شروع</label>
                                         <span class="value">{{$item->start_date}}</span>
-                                        <input class="gone" type="text" name="grade-date_start" id="grade-date_start">
+                                        <input class="gone" type="text" name="gradeStartDate" id="grade-date_start">
                                     </div>
                                     <div class="input-box">
                                         <label for="grade-date_end">تاریخ پایان</label>
                                         <span class="value">{{$item->end_date}}</span>
-                                        <input class="gone" type="text" name="grade-date_end" id="grade-date_end">
+                                        <input class="gone" type="text" name="gradeEndDate" id="grade-date_end">
                                     </div>
                                 </div>
                                 <label for="grade-moreinfo">اطلاعات اضافی</label>
                                 <span class="value">{{$item->additional_info}}</span>
-                                <textarea class="gone" name="grade-moreinfo" id="grade-moreinfo" rows="10"></textarea>
+                                <textarea class="gone" name="gradeMoreinfo" id="grade-moreinfo" rows="10"></textarea>
                             </div>
                         </div>
                     </form>
@@ -240,43 +241,46 @@
                         <h2>زبان ها</h2>
                     </div>
                     @foreach ($lightCv->skill->familiarLanguages as $item)
-                    <div class="box">
-                        <div class="box-head">
-                            <i class="fas fa-times"></i>
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
+                    <form action="" id="fLang-{{$item->id}}">
+                        <input type="hidden" name="fLangId" value="{{$item->id}}">
+                        <div class="box">
+                            <div class="box-head">
+                                <i class="fas fa-times"></i>
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="fLang" data-form-id="fLang-{{$item->id}}">ویرایش اطلاعات</button>
+                            </div>
+                            <div class="box-content">
+                                <div class="input-box w50">
+                                    <label for="language-name">نام زبان</label>
+                                    <span class="value">{{$item->name}}</span>
+                                    <input class="gone" type="text" name="language-name" id="language-name">
+                                </div>
+                                <div class="row-2">
+                                    <div class="input-box">
+                                        <label for="reading-lvl">مهارت خواندن</label>
+                                        <span class="value">{{$item->reading_skill}}</span>
+                                        <input class="gone" type="number" name="reading-lvl" id="reading-lvl" value="1" min="1" max="5">
+                                    </div>
+                                    <div class="input-box">
+                                        <label for="writing-lvl">مهارت نوشتن</label>
+                                        <span class="value">{{$item->writing_skill}}</span>
+                                        <input class="gone" type="number" name="writing-lvl" id="writing-lvl" value="1" min="1" max="5">
+                                    </div>
+                                </div>
+                                <div class="row-2">
+                                    <div class="input-box">
+                                        <label for="listening-lvl">مهارت شنیداری</label>
+                                        <span class="value">{{$item->listening_skill}}</span>
+                                        <input class="gone" type="number" name="listening-lvl" id="listening-lvl" value="1" min="1" max="5">
+                                    </div>
+                                    <div class="input-box">
+                                        <label for="speaking-lvl">مهارت گفتاری</label>
+                                        <span class="value">{{$item->speaking_skill}}</span>
+                                        <input class="gone" type="number" name="speaking-lvl" id="speaking-lvl" value="1" min="1" max="5">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="box-content">
-                            <div class="input-box w50">
-                                <label for="language-name">نام زبان</label>
-                                <span class="value">{{$item->name}}</span>
-                                <input class="gone" type="text" name="language-name" id="language-name">
-                            </div>
-                            <div class="row-2">
-                                <div class="input-box">
-                                    <label for="reading-lvl">مهارت خواندن</label>
-                                    <span class="value">{{$item->reading_skill}}</span>
-                                    <input class="gone" type="number" name="reading-lvl" id="reading-lvl" value="1" min="1" max="5">
-                                </div>
-                                <div class="input-box">
-                                    <label for="writing-lvl">مهارت نوشتن</label>
-                                    <span class="value">{{$item->writing_skill}}</span>
-                                    <input class="gone" type="number" name="writing-lvl" id="writing-lvl" value="1" min="1" max="5">
-                                </div>
-                            </div>
-                            <div class="row-2">
-                                <div class="input-box">
-                                    <label for="listening-lvl">مهارت شنیداری</label>
-                                    <span class="value">{{$item->listening_skill}}</span>
-                                    <input class="gone" type="number" name="listening-lvl" id="listening-lvl" value="1" min="1" max="5">
-                                </div>
-                                <div class="input-box">
-                                    <label for="speaking-lvl">مهارت گفتاری</label>
-                                    <span class="value">{{$item->speaking_skill}}</span>
-                                    <input class="gone" type="number" name="speaking-lvl" id="speaking-lvl" value="1" min="1" max="5">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                     @endforeach
                     <p class="add-new">افزودن زبان تازه</p>
                 </section>

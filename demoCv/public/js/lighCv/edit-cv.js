@@ -61,10 +61,12 @@ function changeBtnTxt(btn, btnDefultTxt) {
     } else {
         btn.innerHTML = btnDefultTxt;
         const btnGroupt= btn.getAttribute('data-btn-group');
-        if(btnGroupt == 'pInfo'){
+        if(btnGroupt == 'pInfo') {
             pInfoEditAjax();
-        }else if(btnGroupt == 'wExp'){
+        }else if(btnGroupt == 'wExp') {
             wExpEditAjax();
+        }else if(btnGroupt == 'educ') {
+            educEditAjax();
         }
 
     }
@@ -99,6 +101,26 @@ function wExpEditAjax() {
     });
     $.ajax({
         url: "/editWexp",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['wExpId']);
+        }
+        },
+    });
+}
+
+function educEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editEduc",
         type:"POST",
         data: formData
         ,

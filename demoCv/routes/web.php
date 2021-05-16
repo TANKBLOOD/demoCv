@@ -30,3 +30,5 @@ Route::get('/editCv/{lightCv}', [LightCvController::class, 'edit'])->name('cv.ed
 Route::post('/editPinfo', [lightCvComponentsController::class, 'editPersonalInfo'])->name('pInfo.edit');
 
 Route::post('/editWexp', [lightCvComponentsController::class, 'editWexpAjax'])->name('wExp.edit');
+
+Route::post('/editEduc', [lightCvComponentsController::class, 'editEducationAjax'])->name('educ.edit');
