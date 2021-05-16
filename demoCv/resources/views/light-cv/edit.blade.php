@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/lightCv/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/lightCv/main.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>ویرایش رزومه</title>
     <style>
         .hidden {
@@ -55,12 +56,13 @@
         </div>
     </nav>
     <div class="form-box">
-        <form action="">
+        <form action="" id="pInfo-{{$lightCv->personalInfo->id}}">
+            <input type="hidden" name="pInfoId" value="{{$lightCv->personalInfo->id}}">
             <section class="tab">
                 <h1 class="tab-title">اطلاعات شخصی</h1>
                 <div class="content">
                     <div class="personal-info">
-                        <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
+                        <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="pInfo" data-form-id="pInfo-{{$lightCv->personalInfo->id}}">ویرایش اطلاعات</button>
                         <div class="row">
                             <div class="col">
                                 <img id="img-preview" src="imgs/profile.jpg" alt="">
@@ -138,41 +140,42 @@
             <h1 class="tab-title">سوابق شغلی</h1>
             <div class="content">
                 @foreach ($lightCv->workExp as $item)
-                <form action="">
+                <form action="" id="wExp-{{$item->id}}">
+                    <input type="hidden" name="wExpId" value="{{$item->id}}">
                     <div class="accordion">
                         <div class="accordion-head">
                             <i class="fas fa-times"></i>
                             <i class="fas fa-arrow-up"></i>
                         </div>
                         <div class="accordion-content active">
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
+                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="wExp" data-form-id="wExp-{{$item->id}}">ویرایش اطلاعات</button>
                             <div class="row">
                                 <div class="input-box">
                                     <label for="job-name">نام شغل</label>
                                     <span class="value">{{$item->title}}</span>
-                                    <input class="gone" type="text" name="job-name" id="job-name">
+                                    <input class="gone" type="text" name="jobName" id="job-name">
                                 </div>
                                 <div class="input-box">
                                     <label for="job-location">نام محل کار</label>
                                     <span class="value">{{$item->work_place_name}}</span>
-                                    <input class="gone" type="text" name="job-location" id="job-location">
+                                    <input class="gone" type="text" name="jobLocation" id="job-location">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-box">
                                     <label for="job-date_start">تاریخ شروع</label>
                                     <span class="value">{{$item->start_date}}</span>
-                                    <input class="gone" type="text" name="job-date_start" id="job-date_start">
+                                    <input class="gone" type="text" name="jobStartDate" id="job-date_start">
                                 </div>
                                 <div class="input-box">
                                     <label for="job-date_end">تاریخ پایان</label>
                                     <span class="value">{{$item->end_date}}</span>
-                                    <input class="gone" type="text" name="job-date_end" id="job-date_end">
+                                    <input class="gone" type="text" name="jobEndDate" id="job-date_end">
                                 </div>
                             </div>
                             <label for="job-moreinfo">اطلاعات اضافی</label>
                             <span class="value">{{$item->additional_info}}</span>
-                            <textarea class="gone" name="job-moreinfo" id="job-moreinfo" rows="10"></textarea>
+                            <textarea class="gone" name="jobMoreinfo" id="job-moreinfo" rows="10"></textarea>
                         </div>
                     </div>
                 </form>
@@ -534,6 +537,7 @@
             <span class="step"></span>
         </div>
     </div>
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/lighCv/new-cv.js')}}"></script>
     <script src="{{asset('js/lighCv/mune.js')}}"></script>
     <script src="{{asset('js/lighCv/edit-cv.js')}}"></script>

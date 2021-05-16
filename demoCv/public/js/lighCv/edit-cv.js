@@ -1,4 +1,6 @@
+var toEditFormId;
 function edit(btn) {
+    toEditFormId= btn.getAttribute('data-form-id');
     var content = btn.parentElement;
     if (content.classList.contains('box-head')) {
         content = content.nextElementSibling;
@@ -6,7 +8,7 @@ function edit(btn) {
     var valueTags = content.getElementsByClassName('value');
     var btnDefultTxt = 'ویرایش اطلاعات';
     var selectInput = document.getElementById('research-type');
-    
+
     for (var valueTag of valueTags) {
         var input = valueTag.nextElementSibling;
 
@@ -20,7 +22,7 @@ function edit(btn) {
                     }
                 }
             }
-    
+
         } else {
             console.log(1);
             if (input.classList.contains('radio-options')) {
@@ -41,7 +43,7 @@ function edit(btn) {
             }else {
                 valueTag.innerHTML = input.value;
             }
-            
+
         }
         valueTag.classList.toggle('gone');
         input.classList.toggle('gone');
@@ -53,10 +55,57 @@ function edit(btn) {
     changeBtnTxt(btn, btnDefultTxt);
 }
 
-function changeBtnTxt(btn, btnDefultTxt) { 
+function changeBtnTxt(btn, btnDefultTxt) {
     if (btn.innerText === btnDefultTxt) {
         btn.innerText = 'اتمام ویرایش';
     } else {
         btn.innerHTML = btnDefultTxt;
+        const btnGroupt= btn.getAttribute('data-btn-group');
+        if(btnGroupt == 'pInfo'){
+            pInfoEditAjax();
+        }else if(btnGroupt == 'wExp'){
+            wExpEditAjax();
+        }
+
     }
+}
+
+function pInfoEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editPinfo",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['pInfoId']);
+        }
+        },
+    });
+}
+
+function wExpEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editWexp",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['wExpId']);
+        }
+        },
+    });
 }

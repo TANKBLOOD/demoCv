@@ -47,7 +47,7 @@ function validateForm() {
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
   }
-  return valid; 
+  return valid;
 }
 
 function fixStepIndicator(n) {
@@ -66,14 +66,14 @@ var img = document.getElementById('img-preview');
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
-    
+
     reader.onload = function(e) {
       img.setAttribute('src', e.target.result);
     }
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
 }
-  
+
 input.addEventListener('change', function() {
   readURL(this);
 });
@@ -117,6 +117,7 @@ for (var button of buttons) {
         var pattern = this.previousElementSibling;
         var parent = this.parentNode;
         var newNode = pattern.cloneNode(true);
+        newNode.setAttribute('data-form-id', '');
         var editBtn = newNode.getElementsByClassName('btn-edit');
         if (editBtn.length > 0) {
           edit(editBtn[0]);
@@ -130,7 +131,7 @@ for (var button of buttons) {
         for (var txtarea of newNodeTextAreas){
           txtarea.value = null;
         }
-        
+
         var newNodeHead = newNode.getElementsByClassName("accordion-head")[0];
         if(newNodeHead){
           newNodeHead.getElementsByTagName("i")[1].addEventListener('click', function () {
@@ -144,11 +145,12 @@ for (var button of buttons) {
         newNodeHead.getElementsByClassName("fa-times")[0].addEventListener("click" ,function (){
           if(parent.getElementsByClassName(newNodeHead.className).length > 1){
             this.parentNode.parentNode.remove();
+            //put the ajax funtion to delete here
           }else{
             alert('Error');
           }
         });
-        
-        parent.insertBefore(newNode, this);  
+
+        parent.insertBefore(newNode, this);
     });
 }

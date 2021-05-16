@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\lightCvComponentsController;
 use App\Http\Controllers\LightCvController;
 use App\Http\Controllers\PanelController;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,7 @@ Route::get('/loadCv/{lightCv}', [LightCvController::class, 'loadCvTemplate'])->n
 Route::get('/userPanel/{user}', [PanelController::class, 'loadUserPanel'])->name('panel.load');
 
 Route::get('/editCv/{lightCv}', [LightCvController::class, 'edit'])->name('cv.edit');
+
+Route::post('/editPinfo', [lightCvComponentsController::class, 'editPersonalInfo'])->name('pInfo.edit');
+
+Route::post('/editWexp', [lightCvComponentsController::class, 'editWexpAjax'])->name('wExp.edit');
