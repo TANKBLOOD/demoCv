@@ -117,7 +117,10 @@ for (var button of buttons) {
         var pattern = this.previousElementSibling;
         var parent = this.parentNode;
         var newNode = pattern.cloneNode(true);
-
+        var editBtn = newNode.getElementsByClassName('btn-edit');
+        if (editBtn.length > 0) {
+          edit(editBtn[0]);
+        }
         var newNodeInputs = newNode.getElementsByTagName('Input');
         for (var inp of newNodeInputs){
           inp.value = null;

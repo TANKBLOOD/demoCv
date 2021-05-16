@@ -23,3 +23,5 @@ Route::post('/createCv', [LightCvController::class, 'store'])->name('lightCv.sto
 
 Route::get('/loadCv/{lightCv}', [LightCvController::class, 'loadCvTemplate'])->name('cv.load');
 Route::get('/userPanel/{user}', [PanelController::class, 'loadUserPanel'])->name('panel.load');
+
+Route::get('/editCv/{lightCv}', [LightCvController::class, 'edit'])->name('cv.edit');

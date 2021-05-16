@@ -184,7 +184,9 @@ class LightCvController extends Controller
         $newLightCv->save();
 
     }
-
+    public function edit(LightCv $lightCv) {
+        return view('light-cv.edit', ['lightCv'=> $lightCv]);
+    }
     public function loadCvTemplate(LightCv $lightCv){
         return view('cv-templates.template_1', ['lightCv'=> $lightCv]);
     }
