@@ -399,60 +399,63 @@
                         </h2>
                     </div>
                     @foreach ($lightCv->projects->researchsAndArticles as $item)
-                    <div class="accordion">
-                        <div class="accordion-head">
-                            <i class="fas fa-times"></i>
-                            <i class="fas fa-arrow-up"></i>
-                        </div>
-                        <div class="accordion-content active">
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
-                            <div class="row">
-                                <div class="input-box-2 w20">
-                                    <label for="research-type">نوع اثر</label>
-                                    @if ($item->type == 'book')
-                                    <span class="value">کتاب</span>
-                                    @elseif ($item->type == 'article')
-                                    <span class="value">مقاله</span>
-                                    @elseif ($item->type == 'thesis')
-                                    <span class="value">پایان نامه</span>
-                                    @elseif ($item->type == 'others')
-                                    <span class="value">سایر</span>
-                                    @endif
-                                    <select class="gone" name="research-type" id="research-type">
-                                        <option value="book">کتاب</option>
-                                        <option value="article">مقاله</option>
-                                        <option value="thesis">پایان نامه</option>
-                                        <option value="others">سایر</option>
-                                    </select>
-                                </div>
-                                <div class="input-box-2 w70">
-                                    <label class="w10" for="research-name">نام اثر</label>
-                                    <span class="value">{{$item->name}}</span>
-                                    <input class="gone" type="text" name="research-name" id="research-name">
-                                </div>
+                    <form action="" id="rAndA-{{$item->id}}">
+                        <input type="hidden" name="rAndAId" value="{{$item->id}}">
+                        <div class="accordion">
+                            <div class="accordion-head">
+                                <i class="fas fa-times"></i>
+                                <i class="fas fa-arrow-up"></i>
                             </div>
-                            <div class="row">
-                                <div class="input-box-2 w30">
-                                    <label class="w20" for="research-publisher">ناشر</label>
-                                    <span class="value">{{$item->publisher}}</span>
-                                    <input class="gone" type="text" name="research-publisher" id="research-publisher">
+                            <div class="accordion-content active">
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="rAndA" data-form-id="rAndA-{{$item->id}}">ویرایش اطلاعات</button>
+                                <div class="row">
+                                    <div class="input-box-2 w20">
+                                        <label for="research-type">نوع اثر</label>
+                                        @if ($item->type == 'book')
+                                        <span class="value">کتاب</span>
+                                        @elseif ($item->type == 'article')
+                                        <span class="value">مقاله</span>
+                                        @elseif ($item->type == 'thesis')
+                                        <span class="value">پایان نامه</span>
+                                        @elseif ($item->type == 'others')
+                                        <span class="value">سایر</span>
+                                        @endif
+                                        <select class="gone" name="researchType" id="research-type">
+                                            <option value="book">کتاب</option>
+                                            <option value="article">مقاله</option>
+                                            <option value="thesis">پایان نامه</option>
+                                            <option value="others">سایر</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-box-2 w70">
+                                        <label class="w10" for="research-name">نام اثر</label>
+                                        <span class="value">{{$item->name}}</span>
+                                        <input class="gone" type="text" name="researchName" id="research-name">
+                                    </div>
                                 </div>
-                                <div class="input-box-2 w30">
-                                    <label class="w20" for="research-link">لینک مرتبط</label>
-                                    <span class="value">{{$item->related_link}}</span>
-                                    <input class="gone" type="text" name="research-link" id="research-link">
+                                <div class="row">
+                                    <div class="input-box-2 w30">
+                                        <label class="w20" for="research-publisher">ناشر</label>
+                                        <span class="value">{{$item->publisher}}</span>
+                                        <input class="gone" type="text" name="researchPublisher" id="research-publisher">
+                                    </div>
+                                    <div class="input-box-2 w30">
+                                        <label class="w20" for="research-link">لینک مرتبط</label>
+                                        <span class="value">{{$item->related_link}}</span>
+                                        <input class="gone" type="text" name="researchLink" id="research-link">
+                                    </div>
+                                    <div class="input-box-2 w30">
+                                        <label class="w20" for="research-date">تاریخ</label>
+                                        <span class="value">{{$item->date}}</span>
+                                        <input class="gone" type="text" name="researchDate" id="research-date">
+                                    </div>
                                 </div>
-                                <div class="input-box-2 w30">
-                                    <label class="w20" for="research-date">تاریخ</label>
-                                    <span class="value">{{$item->date}}</span>
-                                    <input class="gone" type="text" name="research-date" id="research-date">
-                                </div>
+                                <label for="research-moreinfo">اطلاعات اضافی</label>
+                                <span class="long-text value">{{$item->additional_info}}</span>
+                                <textarea class="gone" name="researchMoreinfo" id="research-moreinfo" rows="10"></textarea>
                             </div>
-                            <label for="research-moreinfo">اطلاعات اضافی</label>
-                            <span class="long-text value">{{$item->additional_info}}</span>
-                            <textarea class="gone" name="research-moreinfo" id="research-moreinfo" rows="10"></textarea>
                         </div>
-                    </div>
+                    </form>
                     @endforeach
                     <p class="add-new">افزودن</p>
                 </section>
@@ -464,42 +467,45 @@
                         </h2>
                     </div>
                     @foreach ($lightCv->projects->practicalProjects as $item)
-                    <div class="accordion">
-                        <div class="accordion-head">
-                            <i class="fas fa-times"></i>
-                            <i class="fas fa-arrow-up"></i>
-                        </div>
-                        <div class="accordion-content active">
-                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
-                            <div class="row">
-                                <div class="input-box">
-                                    <label for="project-name">نام اثر</label>
-                                    <span class="value">{{$item->name}}</span>
-                                    <input class="gone" type="text" name="project-name" id="project-name">
-                                </div>
-                                <div class="input-box">
-                                    <label for="project-employer">کار فرما</label>
-                                    <span class="value">{{$item->task_master}}</span>
-                                    <input class="gone" type="text" name="project-employer" id="project-employer">
-                                </div>
+                    <form action="" id="pracProj-{{$item->id}}">
+                        <input type="hidden" name="pracProjectId" value="{{$item->id}}">
+                        <div class="accordion">
+                            <div class="accordion-head">
+                                <i class="fas fa-times"></i>
+                                <i class="fas fa-arrow-up"></i>
                             </div>
-                            <div class="row">
-                                <div class="input-box">
-                                    <label for="project-link">لینک مرتبط</label>
-                                    <span class="value">{{$item->related_link}}</span>
-                                    <input class="gone" type="text" name="project-link" id="project-link">
+                            <div class="accordion-content active">
+                                <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="pracProj" data-form-id="pracProj-{{$item->id}}">ویرایش اطلاعات</button>
+                                <div class="row">
+                                    <div class="input-box">
+                                        <label for="project-name">نام اثر</label>
+                                        <span class="value">{{$item->name}}</span>
+                                        <input class="gone" type="text" name="projectName" id="project-name">
+                                    </div>
+                                    <div class="input-box">
+                                        <label for="project-employer">کار فرما</label>
+                                        <span class="value">{{$item->task_master}}</span>
+                                        <input class="gone" type="text" name="projectEmployer" id="project-employer">
+                                    </div>
                                 </div>
-                                <div class="input-box">
-                                    <label for="research-date">تاریخ</label>
-                                    <span class="value">{{$item->date}}</span>
-                                    <input class="gone" type="text" name="research-date" id="research-date">
+                                <div class="row">
+                                    <div class="input-box">
+                                        <label for="project-link">لینک مرتبط</label>
+                                        <span class="value">{{$item->related_link}}</span>
+                                        <input class="gone" type="text" name="projectLink" id="project-link">
+                                    </div>
+                                    <div class="input-box">
+                                        <label for="research-date">تاریخ</label>
+                                        <span class="value">{{$item->date}}</span>
+                                        <input class="gone" type="text" name="researchDate" id="research-date">
+                                    </div>
                                 </div>
+                                <label for="project-moreinfo">اطلاعات اضافی</label>
+                                <span class="long-text value">{{$item->additional_info}}</span>
+                                <textarea class="gone" name="projectMoreinfo" id="project-moreinfo" rows="10"></textarea>
                             </div>
-                            <label for="project-moreinfo">اطلاعات اضافی</label>
-                            <span class="long-text value">{{$item->additional_info}}</span>
-                            <textarea class="gone" name="project-moreinfo" id="project-moreinfo" rows="10"></textarea>
                         </div>
-                    </div>
+                    </form>
                     @endforeach
                     <p class="add-new">افزودن</p>
                 </section>
@@ -513,24 +519,27 @@
             </h1>
             <div class="content">
                 @foreach ($lightCv->links as $item)
-                <div class="box">
-                    <div class="box-head">
-                        <i class="fas fa-times"></i>
-                        <button type="button" class="btn-secondary btn-edit" onclick="edit(this)">ویرایش اطلاعات</button>
-                    </div>
-                    <div class="box-content">
-                        <div class="input-box w45">
-                            <label for="link-name">عنوان</label>
-                            <span class="value">{{$item->title}}</span>
-                            <input class="gone" type="text" name="link-name" id="link-name">
+                <form action="" id="link-{{$item->id}}">
+                    <input type="hidden" name="linkId" value="{{$item->id}}">
+                    <div class="box">
+                        <div class="box-head">
+                            <i class="fas fa-times"></i>
+                            <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="link" data-form-id="link-{{$item->id}}">ویرایش اطلاعات</button>
                         </div>
-                        <div class="input-box w45">
-                            <label for="link-url">لینک</label>
-                            <span class="value">{{$item->url}}</span>
-                            <input class="gone" type="text" name="link-url" id="link-url">
+                        <div class="box-content">
+                            <div class="input-box w45">
+                                <label for="link-name">عنوان</label>
+                                <span class="value">{{$item->title}}</span>
+                                <input class="gone" type="text" name="linkName" id="link-name">
+                            </div>
+                            <div class="input-box w45">
+                                <label for="link-url">لینک</label>
+                                <span class="value">{{$item->url}}</span>
+                                <input class="gone" type="text" name="linkUrl" id="link-url">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 @endforeach
                 <p class="add-new">افزودن</p>
             </div>

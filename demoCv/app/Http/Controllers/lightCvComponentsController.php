@@ -8,6 +8,9 @@ use App\Models\EducationalBackground;
 use App\Models\ExperimentalSkills;
 use App\Models\FamiliarLanguages;
 use App\Models\PersonalInfo;
+use App\Models\PracticalProject;
+use App\Models\RelatedLinks;
+use App\Models\ResearchAndArticles;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
 
@@ -93,5 +96,40 @@ class lightCvComponentsController extends Controller
 
         $achv->save();
         return response()->json(array('achvId'=> $achv->id), 200);
+    }
+
+    public function rAndAEditAjax(Request $request) {
+        $rAndA= ResearchAndArticles::findOrFail($request->rAndAId);
+        $rAndA->type= $request->researchType;
+        $rAndA->name= $request->researchName;
+        $rAndA->publisher= $request->researchPublisher;
+        $rAndA->related_link= $request->researchLink;
+        $rAndA->date= $request->researchDate;
+        $rAndA->additional_info= $request->researchMoreinfo;
+
+        $rAndA->save();
+        return response()->json(array('rAndAId'=> $rAndA->id), 200);
+    }
+
+    public function pracProjectEditAjax(Request $request) {
+        $pracProj= PracticalProject::findOrFail($request->pracProjectId);
+        $pracProj->name= $request->projectName;
+        $pracProj->task_master= $request->projectEmployer;
+        $pracProj->related_link= $request->projectLink;
+        $pracProj->date= $request->researchDate;
+        $pracProj->additional_info= $request->projectMoreinfo;
+
+        $pracProj->save();
+        return response()->json(array('pracProjId'=> $pracProj->id), 200);
+    }
+
+    public function linkEditAjax(Request $request) {
+        $link= RelatedLinks::findOrFail($request->linkId);
+        $link->title= $request->linkName;
+        $link->url= $request->linkUrl;
+
+        $link->save();
+        return response()->json(array('linkId'=> $link->id), 200);
+
     }
 }

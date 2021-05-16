@@ -40,3 +40,9 @@ Route::post('/editExpSkill', [lightCvComponentsController::class, 'editExpSkillA
 Route::post('/editCandC', [lightCvComponentsController::class, 'cAndCEditAjax'])->name('cAndC.Edit');
 
 Route::post('/editAchv', [lightCvComponentsController::class, 'achvEditAjax'])->name('achv.edit');
+
+Route::post('/editRAndA', [lightCvComponentsController::class, 'rAndAEditAjax'])->name('rAndA.edit');
+
+Route::post('/editPracProj', [lightCvComponentsController::class, 'pracProjectEditAjax'])->name('pracProj.edit');
+
+Route::post('/editLink', [lightCvComponentsController::class, 'linkEditAjax'])->name('link.edit');

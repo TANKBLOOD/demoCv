@@ -75,6 +75,12 @@ function changeBtnTxt(btn, btnDefultTxt) {
             editCandCAjax();
         }else if(btnGroupt == 'achv') {
             editAchvAjax();
+        }else if(btnGroupt == 'rAndA') {
+            rAndAEditAjax();
+        }else if(btnGroupt == 'pracProj') {
+            pracProjectAjax();
+        }else if(btnGroupt == 'link') {
+            linkEditAjax();
         }
 
     }
@@ -215,6 +221,66 @@ function editAchvAjax() {
         success:function(response){
         if(response) {
             alert(response['achvId']);
+        }
+        },
+    });
+}
+
+function rAndAEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editRAndA",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['rAndAId']);
+        }
+        },
+    });
+}
+
+function pracProjectAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editPracProj",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['pracProjId']);
+        }
+        },
+    });
+}
+
+function linkEditAjax() {
+    const formData= $('#'+toEditFormId).serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "/editLink",
+        type:"POST",
+        data: formData
+        ,
+        success:function(response){
+        if(response) {
+            alert(response['linkId']);
         }
         },
     });
