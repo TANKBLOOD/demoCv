@@ -35,7 +35,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function editWexpAjax(Request $request) {
-        $wExp= WorkExperience::findOrFail($request->wExpId);
+        if($request->wExpId != ''){
+            $wExp= WorkExperience::findOrFail($request->wExpId);
+        }else{
+            $wExp= new WorkExperience();
+            $wExp->cv_id= $request->parentId;
+        }
+
         $wExp->title= $request->jobName;
         $wExp->work_place_name= $request->jobLocation;
         $wExp->start_date= $request->jobStartDate;
@@ -48,7 +54,14 @@ class lightCvComponentsController extends Controller
     }
 
     public function editEducationAjax(Request $request) {
-        $educ= EducationalBackground::findOrFail($request->educId);
+        if($request->educId != '' ) {
+            $educ= EducationalBackground::findOrFail($request->educId);
+        }else {
+            $educ= new EducationalBackground();
+            $educ->cv_id= $request->parentId;
+        }
+
+
         $educ->degree_name= $request->gradeName;
         $educ->institution_name= $request->gradeLocation;
         $educ->start_date= $request->gradeStartDate;
@@ -60,7 +73,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function editFlangAjax(Request $request) {
-        $fLang= FamiliarLanguages::findOrFail($request->fLangId);
+        if($request->fLangId != '') {
+            $fLang= FamiliarLanguages::findOrFail($request->fLangId);
+        }else {
+            $fLang=new FamiliarLanguages();
+            $fLang->skill_id= $request->parentId;
+        }
+
         $fLang->name= $request->languageName;
         $fLang->reading_skill= $request->readingLvl;
         $fLang->writing_skill= $request->writingLvl;
@@ -72,7 +91,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function editExpSkillAjax(Request $request) {
-        $expSkill= ExperimentalSkills::findOrFail($request->expSkillId);
+        if($request->expSkillId != '') {
+            $expSkill= ExperimentalSkills::findOrFail($request->expSkillId);
+        }else {
+            $expSkill= new ExperimentalSkills();
+            $expSkill->skill_id= $request->parentId;
+        }
+
         $expSkill->name= $request->skillName;
         $expSkill->level= $request->skillLvl;
         $expSkill->save();
@@ -80,7 +105,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function cAndCEditAjax(Request $request) {
-        $cAndC= CoursesAndCertificates::findOrFail($request->cAndCId);
+        if($request->cAndCId != '') {
+            $cAndC= CoursesAndCertificates::findOrFail($request->cAndCId);
+        }else {
+            $cAndC= new CoursesAndCertificates();
+            $cAndC->skill_id= $request->parentId;
+        }
+
         $cAndC->title= $request->certificateName;
         $cAndC->institution_name= $request->instituteName;
         $cAndC->date= $request->certificateDate;
@@ -90,7 +121,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function achvEditAjax(Request $request) {
-        $achv= Achievement::findOrFail($request->achvId);
+        if($request->achvId != '') {
+            $achv= Achievement::findOrFail($request->achvId);
+        }else {
+            $achv= new Achievement();
+            $achv->skill_id= $request->parentId;
+        }
+
         $achv->title= $request->achvName;
         $achv->date= $request->achvDate;
 

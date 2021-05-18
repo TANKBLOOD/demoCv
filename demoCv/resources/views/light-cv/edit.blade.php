@@ -142,6 +142,7 @@
                 @foreach ($lightCv->workExp as $item)
                 <form action="" id="wExp-{{$item->id}}">
                     <input type="hidden" name="wExpId" value="{{$item->id}}">
+                    <input type="hidden" name="parentId" value="{{$lightCv->id}}">
                     <div class="accordion">
                         <div class="accordion-head">
                             <i class="fas fa-times"></i>
@@ -190,6 +191,7 @@
                 @foreach ($lightCv->education as $item)
                     <form action="" id="educ-{{$item->id}}">
                         <input type="hidden" name="educId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->id}}">
                         <div class="accordion">
                             <div class="accordion-head">
                                 <i class="fas fa-times"></i>
@@ -243,6 +245,7 @@
                     @foreach ($lightCv->skill->familiarLanguages as $item)
                     <form action="" id="fLang-{{$item->id}}">
                         <input type="hidden" name="fLangId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->skill->id}}">
                         <div class="box">
                             <div class="box-head">
                                 <i class="fas fa-times"></i>
@@ -292,6 +295,7 @@
                     @foreach ($lightCv->skill->expSkills as $item)
                     <form action="" id="expSkill-{{$item->id}}">
                         <input type="hidden" name="expSkillId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->skill->id}}">
                         <div class="box">
                             <div class="box-head">
                                 <i class="fas fa-times"></i>
@@ -324,6 +328,7 @@
                     @foreach ($lightCv->skill->coursesAndCertificates as $item)
                     <form action="" id="cAndC-{{$item->id}}">
                         <input type="hidden" name="cAndCId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->skill->id}}">
                         <div class="box">
                             <div class="box-head">
                                 <i class="fas fa-times"></i>
@@ -361,6 +366,7 @@
                     @foreach ($lightCv->skill->achivements as $item)
                     <form action="" id="achv-{{$item->id}}">
                         <input type="hidden" name="achvId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->skill->id}}">
                         <div class="box">
                             <div class="box-head">
                                 <i class="fas fa-times"></i>

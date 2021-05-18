@@ -1,6 +1,8 @@
 var toEditFormId;
+var toEditRelatedBtn;
 function edit(btn) {
     toEditFormId= btn.getAttribute('data-form-id');
+    toEditRelatedBtn= btn;
     var content = btn.parentElement;
     if (content.classList.contains('box-head')) {
         content = content.nextElementSibling;
@@ -99,9 +101,6 @@ function pInfoEditAjax() {
         data: formData
         ,
         success:function(response){
-        if(response) {
-            alert(response['pInfoId']);
-        }
         },
     });
 }
@@ -120,7 +119,8 @@ function wExpEditAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['wExpId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'wExp-'+response['wExpId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'wExp-'+response['wExpId']);
         }
         },
     });
@@ -140,7 +140,8 @@ function educEditAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['educId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'educ-'+response['educId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'educ-'+response['educId']);
         }
         },
     });
@@ -160,7 +161,8 @@ function fLangEditAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['fLangId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'fLang-'+response['fLangId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'fLang-'+response['fLangId']);
         }
         },
     });
@@ -180,7 +182,8 @@ function expSkillEditAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['expSkillId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'expSkill-'+response['expSkillId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'expSkill-'+response['expSkillId']);
         }
         },
     });
@@ -200,7 +203,8 @@ function editCandCAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['cAndCId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'cAndC-'+response['cAndCId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'cAndC-'+response['cAndCId']);
         }
         },
     });
@@ -220,7 +224,8 @@ function editAchvAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['achvId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'achv-'+response['achvId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'achv-'+response['achvId']);
         }
         },
     });

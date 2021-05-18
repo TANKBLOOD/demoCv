@@ -117,13 +117,17 @@ for (var button of buttons) {
         var pattern = this.previousElementSibling;
         var parent = this.parentNode;
         var newNode = pattern.cloneNode(true);
-        newNode.setAttribute('data-form-id', '');
+        newNode.setAttribute('id', 'newCom');
         var editBtn = newNode.getElementsByClassName('btn-edit');
         if (editBtn.length > 0) {
           edit(editBtn[0]);
+          editBtn[0].setAttribute('data-form-id', 'newCom');
         }
         var newNodeInputs = newNode.getElementsByTagName('Input');
         for (var inp of newNodeInputs){
+            if(inp.getAttribute('name') == 'parentId') {
+                continue;
+            }
           inp.value = null;
         }
 
