@@ -9,7 +9,7 @@ class PanelController extends Controller
 {
     public function loadUserPanel(User $user) {
         $userCvs= $user->cvs;
-
-        return view('panels.user-panel', ['cvs'=> $userCvs]);
+        $userName= $user->name;
+        return view('panels.user-panel', ['cvs'=> $userCvs, 'userName'=>$userName]);
     }
 }

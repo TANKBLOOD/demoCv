@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/createCv', [LightCvController::class, 'create'])->name('lightCv.create');
+Route::get('/createCv', [LightCvController::class, 'create'])->name('lightCv.create');// we will need a user id for asigning the cv to the user.
 Route::post('/createCv', [LightCvController::class, 'store'])->name('lightCv.store');
 
 Route::get('/loadCv/{lightCv}', [LightCvController::class, 'loadCvTemplate'])->name('cv.load');

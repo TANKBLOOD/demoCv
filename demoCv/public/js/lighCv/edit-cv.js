@@ -26,7 +26,7 @@ function edit(btn) {
             }
 
         } else {
-            console.log(1);
+
             if (input.classList.contains('radio-options')) {
                 var radioBoxs = input.getElementsByClassName('radio-box');
                 for (var radioBox of radioBoxs) {
@@ -294,3 +294,17 @@ function linkEditAjax() {
         },
     });
 }
+
+
+var nextBtn = document.getElementById('nextBtn');
+var prevBtn = document.getElementById('prevBtn');
+
+nextBtn.addEventListener('click', function(){
+    if (nextBtn.innerHTML === 'ثبت') {
+        nextBtn.classList.add('hidden');
+    }
+})
+
+prevBtn.addEventListener('click', function(){
+    nextBtn.classList.remove('hidden');
+})
