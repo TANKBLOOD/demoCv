@@ -136,7 +136,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function rAndAEditAjax(Request $request) {
-        $rAndA= ResearchAndArticles::findOrFail($request->rAndAId);
+        if($request->rAndAId != '') {
+            $rAndA= ResearchAndArticles::findOrFail($request->rAndAId);
+        }else {
+            $rAndA= new ResearchAndArticles();
+            $rAndA->project_id= $request->parentId;
+        }
+
         $rAndA->type= $request->researchType;
         $rAndA->name= $request->researchName;
         $rAndA->publisher= $request->researchPublisher;
@@ -149,7 +155,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function pracProjectEditAjax(Request $request) {
-        $pracProj= PracticalProject::findOrFail($request->pracProjectId);
+        if($request->pracProjectId != '') {
+            $pracProj= PracticalProject::findOrFail($request->pracProjectId);
+        }else {
+            $pracProj= new PracticalProject();
+            $pracProj->project_id= $request->parentId;
+        }
+
         $pracProj->name= $request->projectName;
         $pracProj->task_master= $request->projectEmployer;
         $pracProj->related_link= $request->projectLink;
@@ -161,7 +173,13 @@ class lightCvComponentsController extends Controller
     }
 
     public function linkEditAjax(Request $request) {
-        $link= RelatedLinks::findOrFail($request->linkId);
+        if($request->linkId != '') {
+            $link= RelatedLinks::findOrFail($request->linkId);
+        }else {
+            $link= new RelatedLinks();
+            $link->cv_id= $request->parentId;
+        }
+
         $link->title= $request->linkName;
         $link->url= $request->linkUrl;
 

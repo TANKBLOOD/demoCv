@@ -407,6 +407,7 @@
                     @foreach ($lightCv->projects->researchsAndArticles as $item)
                     <form action="" id="rAndA-{{$item->id}}">
                         <input type="hidden" name="rAndAId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->projects->id}}">
                         <div class="accordion">
                             <div class="accordion-head">
                                 <i class="fas fa-times"></i>
@@ -475,6 +476,7 @@
                     @foreach ($lightCv->projects->practicalProjects as $item)
                     <form action="" id="pracProj-{{$item->id}}">
                         <input type="hidden" name="pracProjectId" value="{{$item->id}}">
+                        <input type="hidden" name="parentId" value="{{$lightCv->projects->id}}">
                         <div class="accordion">
                             <div class="accordion-head">
                                 <i class="fas fa-times"></i>
@@ -527,6 +529,7 @@
                 @foreach ($lightCv->links as $item)
                 <form action="" id="link-{{$item->id}}">
                     <input type="hidden" name="linkId" value="{{$item->id}}">
+                    <input type="hidden" name="parentId" value="{{$lightCv->id}}">
                     <div class="box">
                         <div class="box-head">
                             <i class="fas fa-times"></i>

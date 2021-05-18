@@ -245,7 +245,8 @@ function rAndAEditAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['rAndAId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'rAndA-'+response['rAndAId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'rAndA-'+response['rAndAId']);
         }
         },
     });
@@ -265,7 +266,8 @@ function pracProjectAjax() {
         ,
         success:function(response){
         if(response) {
-            alert(response['pracProjId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'pracProj-'+response['pracProjId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'pracProj-'+response['pracProjId']);
         }
         },
     });
@@ -286,6 +288,8 @@ function linkEditAjax() {
         success:function(response){
         if(response) {
             alert(response['linkId']);
+            toEditRelatedBtn.parentNode.parentNode.parentNode.setAttribute('id', 'link-'+response['linkId']);
+            toEditRelatedBtn.setAttribute('data-form-id', 'link-'+response['linkId']);
         }
         },
     });
