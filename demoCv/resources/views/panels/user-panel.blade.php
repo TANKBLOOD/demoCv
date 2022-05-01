@@ -22,16 +22,16 @@
 
             <ul class="panel-mune">
                 <li class="active">رزومه های من</li>
-                <li>رزومه جدید</li>
-                <li>تنظیمات</li>
-                <li>خروج</li>
+                <li><a href="/createCv">رزومه جدید</a></li>
+                <li><a href="/user/profile">تنظیمات</a></li>
+                <li><form method="POST" action="http://127.0.0.1:8000/logout">@csrf<button type="submit">خروج</button> </form></li>
             </ul>
         </div>
     </nav>
     <div class="panel-container">
         <div class="tabel">
             <div class="tabel-meta">
-                <p>شما  <strong>5</strong> رزومه دارید</p>
+                <p>شما  <strong>{{count($cvs)}}</strong> رزومه دارید</p>
                 <a href="/createCv">افزودن</a>
             </div>
             <ul>
@@ -40,9 +40,13 @@
                     <strong>{{$item->title}}</strong>
                     <span>{{$item->created_at}}</span>
                     <div class="options">
-                        <a href="#"><i class="far fa-trash-alt"></i></a>
-                        <a href="/editCv/{{$item->id}}"><i class="fas fa-edit"></i></a>
-                        <a href="#"><i class="fas fa-file-download"></i></a>
+                        <form action="/deleteLightCv" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="cvId" value="{{$item->id}}">
+                        <button type="submit"><i class="far fa-trash-alt"></i></button></form>
+                        <button><a href="/editCv/{{$item->id}}"><i class="fas fa-edit"></i></a></button>
+                        <button><a href="/exportPage/{{$item->id}}"><i class="fas fa-file-download"></i></a></button>
                     </div>
                 </li>
                 @endforeach

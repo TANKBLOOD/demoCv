@@ -18,6 +18,8 @@ use App\Models\Skills;
 use App\Models\User;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Svg\Tag\Rect;
 
 class LightCvController extends Controller
 {
@@ -26,7 +28,7 @@ class LightCvController extends Controller
     }
     public function store(Request $request) {
         $newLightCv= new LightCv();
-        $newLightCv->user_id= 1;
+        $newLightCv->user_id= Auth::id();
         $newLightCv->title= 'test';
         $newLightCv->save();
 
@@ -179,15 +181,21 @@ class LightCvController extends Controller
             $newLightCv->links()->save($newRelatedLink);
         }
 
-        $newLightCv->user_id= 1;
-        $newLightCv->title= 'test';
-        $newLightCv->save();
-
     }
     public function edit(LightCv $lightCv) {
         return view('light-cv.edit', ['lightCv'=> $lightCv]);
     }
     public function loadCvTemplate(LightCv $lightCv){
         return view('cv-templates.template_1', ['lightCv'=> $lightCv]);
+    }
+    public function delete(Request $request){
+        $cv= LightCv::findOrFail($request->cvId);
+        $cv->delete();
+        $user= User::findOrFail(Auth::id());
+
+        return redirect()->route('panel.load', ['cvs'=>$user->cvs, 'userName'=>$user->name]);
+    }
+    public function exportPage($id) {
+        return view('light-cv.export', ['cvId'=>$id]);
     }
 }

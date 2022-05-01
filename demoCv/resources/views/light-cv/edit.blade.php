@@ -65,7 +65,7 @@
                         <button type="button" class="btn-secondary btn-edit" onclick="edit(this)" data-btn-group="pInfo" data-form-id="pInfo-{{$lightCv->personalInfo->id}}">ویرایش اطلاعات</button>
                         <div class="row">
                             <div class="col">
-                                <img id="img-preview" src="imgs/profile.jpg" alt="">
+                                <img id="img-preview" src="{{asset('person.jpg')}}" alt="">
                                 <input class="hidden" type="file" name="img-input" id="img-input">
                             </div>
                             <div class="col">

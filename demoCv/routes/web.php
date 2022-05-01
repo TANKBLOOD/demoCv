@@ -3,6 +3,7 @@
 use App\Http\Controllers\lightCvComponentsController;
 use App\Http\Controllers\LightCvController;
 use App\Http\Controllers\PanelController;
+use App\Http\Controllers\TemplatesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Route::get('/createCv', [LightCvController::class, 'create'])->name('lightCv.create');// we will need a user id for asigning the cv to the user.
 Route::post('/createCv', [LightCvController::class, 'store'])->name('lightCv.store');
 
 Route::get('/loadCv/{lightCv}', [LightCvController::class, 'loadCvTemplate'])->name('cv.load');
-Route::get('/userPanel/{user}', [PanelController::class, 'loadUserPanel'])->name('panel.load');
+Route::get('/userPanel', [PanelController::class, 'loadUserPanel'])->name('panel.load');
 
 Route::get('/editCv/{lightCv}', [LightCvController::class, 'edit'])->name('cv.edit');
 
@@ -46,3 +47,15 @@ Route::post('/editRAndA', [lightCvComponentsController::class, 'rAndAEditAjax'])
 Route::post('/editPracProj', [lightCvComponentsController::class, 'pracProjectEditAjax'])->name('pracProj.edit');
 
 Route::post('/editLink', [lightCvComponentsController::class, 'linkEditAjax'])->name('link.edit');
+
+Route::get('/pdf/{lightCv}', [PanelController::class, 'pdf']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::delete('/deleteLightCv', [LightCvController::class , 'delete'])->name('LightCv.delete');
+
+Route::get('/exportPage/{id}', [LightCvController::class, 'exportPage']);
+
+Route::get('/template1export/{lightCv}', [TemplatesController::class, 'temp1']);

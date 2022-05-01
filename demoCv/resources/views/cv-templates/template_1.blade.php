@@ -4,13 +4,152 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/templates/template_1/main.css')}}">
     <title>قالب رزومه شماره یک</title>
+
+    <style>
+        @font-face {
+        font-family: aria;
+        src: url("{{asset('css/templates/template_1/Far_Aria.ttf')}}");
+        }
+         * {
+    font-family: Shabnam;
+    text-align: right;
+}
+
+body {
+    direction: rtl;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+.container {
+    width: 70%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+aside {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    align-self: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.card-header {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.card-header h2 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row span {
+    margin: 4px;
+}
+.card-content a {
+    margin-bottom: 10px;
+}
+
+.bars {
+    display: flex;
+}
+
+.bar {
+    background-color: #D9D9D9;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+span.bar {
+    margin: 0 2px;
+}
+
+.green {
+    background-color: #5AD47A;
+}
+
+main {
+    width: 65%;
+}
+.intro {
+    margin-bottom: 30px;
+}
+h1 {
+    margin: 0;
+    margin-bottom: 6px;
+}
+
+.job {
+    font-size: 1.2rem;
+}
+
+.value {
+    font-weight: bold;
+}
+
+.text-area {
+    line-height: 2;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+padding-top: 12px;
+padding-bottom: 12px;
+}
+
+.box {
+    margin-bottom: 20px;
+}
+
+.read-more {
+    font-size: 0.9rem;
+}
+    </style>
 </head>
 <body>
     <div class="container">
         <aside>
-            <img class="profile-img" src="profile.jpg" alt="">
+            {{-- <img class="profile-img" src="profile.jpg" alt=""> --}}
             <div class="card">
                 <div class="card-header">
                     <h2>اطلاعات تماس</h2>
@@ -106,7 +245,7 @@
                     </h2>
                 </div>
                 @foreach ($lightCv->workExp as $item)
-                <div class="card-content">
+                <div class="card-content" style="border-bottom:2px dashed gray; margin: 20px 0; padding: 0 0 15px 0;">
                     <div class="row">
                         <span>نام شغل :</span>
                         <span class="value">{{$item->title}}</span>
@@ -133,7 +272,7 @@
                     </h2>
                 </div>
                 @foreach ($lightCv->education as $item)
-                <div class="card-content">
+                <div class="card-content" style="border-bottom:2px dashed gray; margin: 20px 0; padding: 0 0 15px 0;">
                     <div class="row">
                         <span>مقطع تحصیلی :</span>
                         <span class="value">{{$item->degree_name}}</span>
@@ -290,5 +429,6 @@
             </div>
         </main>
     </div>
+
 </body>
 </html>

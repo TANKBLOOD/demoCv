@@ -14,7 +14,7 @@
             <div class="user-info">
                 <div class="user">
                     <img src="{{asset('images/defualt.png')}}" alt="profile pic">
-                    <p>سلام امیر محمد</p>
+                    <p>{{Auth::user()->name}}</p>
                 </div>
                 <div id="bars-icon">
                     <i class="fas fa-bars"></i>
